@@ -67,9 +67,6 @@ lib/
 ##
 
 # constants
-src/constants.ts
-android/src/main/java/com/twiliovoicereactnative/CommonConstants.java
-ios/TwilioVoiceReactNativeConstants.h
 
 # docs
 docs/
