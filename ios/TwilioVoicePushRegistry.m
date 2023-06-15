@@ -38,32 +38,32 @@ NSString * const kTwilioVoicePushRegistryNotificationCancelledCallInviteKey = @"
 
 #pragma mark - PKPushRegistryDelegate
 
-- (void)pushRegistry:(PKPushRegistry *)registry
-didUpdatePushCredentials:(PKPushCredentials *)credentials
-             forType:(NSString *)type {
-    if ([type isEqualToString:PKPushTypeVoIP]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTwilioVoicePushRegistryNotification
-                                                            object:nil
-                                                          userInfo:@{kTwilioVoiceReactNativeVoiceEventType: kTwilioVoicePushRegistryNotificationDeviceTokenUpdated,
-                                                                     kTwilioVoicePushRegistryNotificationDeviceTokenKey: credentials.token}];
-    }
-}
+// - (void)pushRegistry:(PKPushRegistry *)registry
+// didUpdatePushCredentials:(PKPushCredentials *)credentials
+//              forType:(NSString *)type {
+//     if ([type isEqualToString:PKPushTypeVoIP]) {
+//         [[NSNotificationCenter defaultCenter] postNotificationName:kTwilioVoicePushRegistryNotification
+//                                                             object:nil
+//                                                           userInfo:@{kTwilioVoiceReactNativeVoiceEventType: kTwilioVoicePushRegistryNotificationDeviceTokenUpdated,
+//                                                                      kTwilioVoicePushRegistryNotificationDeviceTokenKey: credentials.token}];
+//     }
+// }
 
-- (void)pushRegistry:(PKPushRegistry *)registry
-didReceiveIncomingPushWithPayload:(PKPushPayload *)payload
-             forType:(PKPushType)type
-withCompletionHandler:(void (^)(void))completion {
-    if ([type isEqualToString:PKPushTypeVoIP]) {
-        [TwilioVoiceSDK handleNotification:payload.dictionaryPayload delegate:self delegateQueue:nil];
-    }
+// - (void)pushRegistry:(PKPushRegistry *)registry
+// didReceiveIncomingPushWithPayload:(PKPushPayload *)payload
+//              forType:(PKPushType)type
+// withCompletionHandler:(void (^)(void))completion {
+//     if ([type isEqualToString:PKPushTypeVoIP]) {
+//         [TwilioVoiceSDK handleNotification:payload.dictionaryPayload delegate:self delegateQueue:nil];
+//     }
 
-    completion();
-}
+//     completion();
+// }
 
-- (void)pushRegistry:(PKPushRegistry *)registry
-        didInvalidatePushTokenForType:(NSString *)type {
-    // TODO: notify view-controller to emit event that the push-registry has been invalidated
-}
+// - (void)pushRegistry:(PKPushRegistry *)registry
+//         didInvalidatePushTokenForType:(NSString *)type {
+//     // TODO: notify view-controller to emit event that the push-registry has been invalidated
+// }
 
 #pragma mark - TVONotificationDelegate
 
