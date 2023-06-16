@@ -97,10 +97,6 @@ static TVODefaultAudioDevice *sTwilioAudioDevice;
         [self subscribeToNotifications];
         [self initializeCallKit];
         [self initializeAudioDeviceList];
-        
-        // Initialize PKPushRegistry at launch
-        self.twilioVoicePushRegistry = [TwilioVoicePushRegistry new];
-        [self.twilioVoicePushRegistry updatePushRegistry];
     }
 
     return self;
